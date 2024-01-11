@@ -5,6 +5,7 @@ import jakarta.persistence.EntityManagerFactory;
 import jakarta.persistence.Persistence;
 
 public class JPAConfig {
+    
     private static final String PERSISTENCE_UNIT_NAME = "bank_medewerkers";
     private static EntityManagerFactory factory = Persistence.createEntityManagerFactory(PERSISTENCE_UNIT_NAME);
     private static EntityManager entityManager = factory.createEntityManager();

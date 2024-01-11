@@ -1,5 +1,5 @@
 package banking.repository;
 
-public class MedDetailRepo {
+public class ProdRepo {
     
 }

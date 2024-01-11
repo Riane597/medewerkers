@@ -1,5 +1,5 @@
 package banking.service;
 
-public class MedService {
+public class GebService {
     
 }
