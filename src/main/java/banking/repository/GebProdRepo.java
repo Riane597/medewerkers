@@ -1,7 +1,11 @@
 package banking.repository;
 
-import banking.entity.GebruikerProduct;
+import java.util.ArrayList;
+import java.util.List;
+
+import banking.entity.Gebruiker;
 import jakarta.persistence.EntityManager;
+import jakarta.persistence.EntityTransaction;
 
 public class GebProdRepo {
     
@@ -11,15 +15,16 @@ public class GebProdRepo {
         this.entityManager = entityManager;
     }
 
-    public GebruikerProduct gebruikerProduct(GebruikerProduct gebruikerProduct) {
+    public List<Gebruiker> getGebruikers() {
+        List<Gebruiker> result = new ArrayList<>();
+        EntityTransaction transaction = entityManager.getTransaction();
         try {
-            entityManager.getTransaction().begin();
-            entityManager.persist(gebruikerProduct);
-            entityManager.getTransaction().commit();
+            transaction.begin();
+            result = entityManager.createQuery("Select a from Gebruiker a").getResultList();            
+            transaction.commit();
         } catch (Exception e) {
-            e.printStackTrace();
+            transaction.rollback();
         }
-
-        return gebruikerProduct;
+        return result;
     }
 }

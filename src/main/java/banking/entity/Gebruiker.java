@@ -11,7 +11,8 @@ public class Gebruiker {
     @GeneratedValue
     private int gebruiker_id;
     private String voornaam;
-    private String achternaam;    
+    private String achternaam;
+    private String password;    
     private String werkplek;
     private String functie;
     private int salaris;
@@ -35,6 +36,12 @@ public class Gebruiker {
     }
     public void setAchternaam(String achternaam) {
         this.achternaam = achternaam;
+    }
+    public String getPassword() {
+        return password;
+    }
+    public void setPassword(String password) {
+        this.password = password;
     }
     public String getWerkplek() {
         return werkplek;
