@@ -1,10 +1,13 @@
 package banking.entity;
 
 import java.sql.Date;
+import java.util.HashSet;
+import java.util.Set;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
+import jakarta.persistence.ManyToMany;
 
 @Entity
 public class Product {
@@ -16,6 +19,9 @@ public class Product {
     private String type;
     private String looptijd;
     private Date start_datum;
+
+    @ManyToMany(mappedBy = "products")
+    private Set<Gebruiker> gebruikers = new HashSet<>();
     
     public int getProductid() {
         return productid;
@@ -53,5 +59,14 @@ public class Product {
     public void setStart_datum(Date start_datum) {
         this.start_datum = start_datum;
     }
+
+    public Set<Gebruiker> getGebruikers() {
+        return gebruikers;
+    }
+
+    public void setGebruikers(Set<Gebruiker> gebruikers) {
+        this.gebruikers = gebruikers;
+    }
+
     
 }

@@ -1,8 +1,14 @@
 package banking.entity;
 
+import java.util.HashSet;
+import java.util.Set;
+
+import jakarta.persistence.JoinColumn;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinTable;
+import jakarta.persistence.ManyToMany;
 
 @Entity
 public class Gebruiker {
@@ -18,6 +24,15 @@ public class Gebruiker {
     private int salaris;
     private int telefoonnummer; 
     private int idnummer;
+
+    @ManyToMany
+    @JoinTable(
+        name = "Gebruiker_Product",
+        joinColumns = @JoinColumn(name = "gebruiker_id"),
+        inverseJoinColumns = @JoinColumn(name = "Product_product_id")
+    )
+
+    private Set<Product> products = new HashSet<>();
     
     public int getGebruiker_id() {
         return gebruiker_id;
@@ -72,5 +87,13 @@ public class Gebruiker {
     }
     public void setIdnummer(int idnummer) {
         this.idnummer = idnummer;
+    }
+
+    public Set<Product> getProducts() {
+        return products;
+    }
+
+    public void setProducts(Set<Product> products) {
+        this.products = products;
     }
 }

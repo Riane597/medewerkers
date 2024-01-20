@@ -6,7 +6,7 @@ import java.util.Scanner;
 import banking.entity.Gebruiker;
 import banking.service.GebService;
 
-public class App {
+public class User {
 
     private static GebService gebService = new GebService();
 
