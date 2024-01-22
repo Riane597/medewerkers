@@ -1,6 +1,7 @@
 package banking.entity;
 
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 import jakarta.persistence.JoinColumn;
@@ -34,6 +35,8 @@ public class Gebruiker {
 
     private Set<Product> products = new HashSet<>();
     
+    private List<Rekening> rekeningen;
+
     public int getGebruiker_id() {
         return gebruiker_id;
     }
@@ -95,5 +98,13 @@ public class Gebruiker {
 
     public void setProducts(Set<Product> products) {
         this.products = products;
+    }
+
+    public List<Rekening> getRekeningen() {
+        return rekeningen;
+    }
+
+    public void setRekening(List<Rekening> rekeningen) {
+        this.rekeningen = rekeningen;
     }
 }

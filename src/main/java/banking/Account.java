@@ -67,6 +67,11 @@ public class Account {
             System.out.print("Enter gebruiker_id: ");
             rekening.setGebruiker_id(Integer.parseInt(scanner.nextLine()));
 
+            rekening.addObserver((rekeningId, newBalance) -> {
+                System.out.println("Balance updated for Rekening ID: " + rekeningId);
+                System.out.println("New Balance: " + newBalance);
+            });
+
             rekService.createRekening(rekening);
 
             System.out.println("Rekening created successfully!");
@@ -103,6 +108,11 @@ public class Account {
             System.out.println("Rekening not found with ID: " + rekeningId);
             return;
         }
+
+        existingRekening.addObserver((id, newBalance) -> {
+            System.out.println("Balance updated for Rekening ID: " + id);
+            System.out.println("New Balance " + newBalance);
+        });
 
         System.out.print("New Saldo (press enter to keep existing): ");
         String newSaldo = scanner.nextLine();

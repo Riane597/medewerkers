@@ -15,6 +15,7 @@ public class Transactie {
     private int bedrag;
     private Date datum;
     private String type;
+
     private int rekeningid;
     
     public int getTransactieid() {
@@ -41,10 +42,11 @@ public class Transactie {
     public void setType(String type) {
         this.type = type;
     }
+
     public int getRekeningid() {
         return rekeningid;
     }
-    public void setRekeningid(int rekeningid) {
+    public void setRekeningid(int rekening) {
         this.rekeningid = rekeningid;
     }
 }

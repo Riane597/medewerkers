@@ -8,16 +8,22 @@ import banking.Observer.Observer;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.OneToOne;
 import jakarta.persistence.Transient;
 
 @Entity
 public class Rekening {
+
     @Id
     @GeneratedValue
     private int rekening_id;
     private int saldo;
     private String type;
-    private int gebruiker_id;
+
+    @OneToOne
+    @JoinColumn(name = "gebruiker_id")
+    private Gebruiker gebruiker;
     
     @Transient
     public List<Observer> observers = new ArrayList<>();
@@ -41,11 +47,13 @@ public class Rekening {
     public void setType(String type) {
         this.type = type;
     }
-    public int getGebruiker_id() {
-        return gebruiker_id;
+
+    public Gebruiker getGebruiker() {
+        return gebruiker;
     }
-    public void setGebruiker_id(int gebruiker_id) {
-        this.gebruiker_id = gebruiker_id;
+
+    public void setGebruiker(Gebruiker gebruiker) {
+        this.gebruiker = gebruiker;
     }
 
     public void addObserver(Observer observer) {

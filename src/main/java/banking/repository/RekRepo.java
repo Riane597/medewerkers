@@ -62,6 +62,7 @@ public class RekRepo {
             entityManager.getTransaction().begin();
             entityManager.merge(rekening);
             entityManager.getTransaction().commit();
+            rekening.notifyObservers();
         } catch (Exception e) {
             entityManager.getTransaction().rollback();
             throw new RuntimeException("Failed to update Rekening", e);
