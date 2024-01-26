@@ -36,6 +36,30 @@ public class User {
         }
     }
 
+    public static void manageUsers() {
+        Scanner scanner = new Scanner(System.in);
+        while (true) {
+            System.out.print("\n1. Create User\n2. Read Users\n3. Update User\n4. Delete User\n5. Back\nOption: ");
+            String option = scanner.nextLine();
+            switch (option) {
+                case "1":
+                    createUser();
+                    break;
+                case "2":
+                    readUsers();
+                    break;
+                case "3":
+                    updateUser();
+                case "4":
+                    deleteUser();
+                case "5":
+                    return; 
+                default:
+                    System.out.println("Invalid option. Please try again.");
+            }
+        }
+    }
+
     public static void createUser() {
 
         Gebruiker gebruiker = new Gebruiker();

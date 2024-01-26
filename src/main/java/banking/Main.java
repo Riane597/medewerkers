@@ -1,19 +1,19 @@
 package banking;
 
 import banking.Factory.AbstractFactory.BankingFactory;
-
 import java.util.Scanner;
 
 import banking.Factory.AccountFactory;
 import banking.Factory.LoanFactory;
 import banking.Factory.TransactionFactory;
 import banking.Factory.UserFactory;
+import banking.Factory.UserProdFactory;
 
 public class Main {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         while (true) {
-            System.out.print("\n1. Manage Accounts\n2. Manage Products\n3. Manage Transactions\n4. Manage Users\n5. Quit\nOption: ");
+            System.out.print("\n1. Manage Accounts\n2. Manage Products\n3. Manage Transactions\n4. Manage Users\n5. reports\n6. Quit\nOption: ");
             String option = scanner.nextLine();
             BankingFactory factory = null;
 
@@ -31,6 +31,9 @@ public class Main {
                     factory = new UserFactory();
                     break;
                 case "5":
+                    factory = new UserProdFactory();
+                    break;
+                case "6":
                     System.exit(0);
                 default:
                     System.out.println("Invalid option. Please try again.");

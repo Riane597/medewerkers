@@ -1,9 +1,7 @@
 package banking.repository;
 
-import java.util.ArrayList;
 import java.util.List;
 
-import banking.entity.Gebruiker;
 import banking.entity.GebruikerProduct;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityTransaction;

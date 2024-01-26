@@ -115,4 +115,21 @@ public class GebRepo {
         }
     }
 
+    public List<Gebruiker> getGebruikersWithProducts() {
+        try {
+            entityManager.getTransaction().begin();
+
+            // Fetch Gebruikers along with their associated Products
+            String jpql = "SELECT DISTINCT g FROM Gebruiker g LEFT JOIN FETCH g.products";
+            TypedQuery<Gebruiker> query = entityManager.createQuery(jpql, Gebruiker.class);
+            List<Gebruiker> gebruikersWithProducts = query.getResultList();
+
+            entityManager.getTransaction().commit();
+
+            return gebruikersWithProducts;
+        } catch (Exception e) {
+            entityManager.getTransaction().rollback();
+            throw new RuntimeException("Failed to fetch Gebruikers with Products", e);
+        }
+    }
 }

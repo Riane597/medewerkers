@@ -1,12 +1,10 @@
 package banking.repository;
 
-import java.util.ArrayList;
 import java.util.List;
 
-import banking.entity.Gebruiker;
 import banking.entity.Rekening;
 import jakarta.persistence.EntityManager;
-import jakarta.persistence.EntityTransaction;
+import jakarta.persistence.Query;
 import jakarta.persistence.TypedQuery;
 
 public class RekRepo {
@@ -80,4 +78,18 @@ public class RekRepo {
         }
     }
 
+    public List<Object[]> getRekeningUpdateCounts() {
+        try {
+            entityManager.getTransaction().begin();
+            String jpql = "SELECT r.rekening_id, r.updateCount FROM Rekening r";
+            Query query = entityManager.createQuery(jpql);
+            List<Object[]> result = query.getResultList();
+            entityManager.getTransaction().commit();
+            return result;
+        } catch (Exception e) {
+            entityManager.getTransaction().rollback();
+            throw new RuntimeException("Failed to get Rekening update counts", e);
+        }
+    }
+    
 }

@@ -32,4 +32,9 @@ public class RekService {
     public void deleteRekening(Rekening rekening) {
         rekeningRepo.deleteRekening(rekening);
     }
+
+    public List<Object[]> getRekeningUpdateCounts() {
+        return rekeningRepo.getRekeningUpdateCounts();
+    }
+    
 }

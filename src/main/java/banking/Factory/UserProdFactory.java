@@ -1,11 +1,11 @@
 package banking.Factory;
 
-import banking.User;
+import banking.Reports;
 import banking.Factory.AbstractFactory.BankingFactory;
 
-public class UserFactory implements BankingFactory {
+public class UserProdFactory implements BankingFactory{
     @Override
     public void manageEntities() {
-        User.manageUsers();
+        Reports.manageReports();
     }
 }
